@@ -7,6 +7,10 @@ generator client {
 }
 
 // --- AUTH.JS MODELS ---
+enum Role {
+  USER
+  ADMIN
+}
 
 model User {
   id            String         @id @default(cuid())
@@ -14,9 +18,13 @@ model User {
   email         String?        @unique
   emailVerified DateTime?
   image         String?
+
+  role          Role           @default(USER)
+
   accounts      Account[]
   sessions      Session[]
-  progress      UserProgress[] 
+  progress      UserProgress[]
+
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
 }
