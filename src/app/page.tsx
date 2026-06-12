@@ -44,13 +44,13 @@ export default function Home() {
   if (error) return <div className="p-10 text-center text-red-500">Error: {error.message}</div>;
 
   return (
-    <main className="min-h-screen bg-slate-50 p-10">
-      <div className="max-w-5xl mx-auto">
-        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight mb-8">Interview Dashboard</h1>
+    <main className="min-h-screen bg-slate-50">
+      <div className="max-w-7xl mx-auto my-8">
+        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight mb-8 mt-8">Interview Dashboard</h1>
         
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {data.questions.map((q: Question) => (
-            <div key={q.id} className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col h-full">
+            <div key={q.id} className="bg-white rounded-xl shadow-sm border border-slate-200 p-8 flex flex-col h-full">
               
               {/* Card Header */}
               <div className="flex justify-between items-start mb-4 gap-4">
