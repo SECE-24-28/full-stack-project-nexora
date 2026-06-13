@@ -139,9 +139,9 @@ export default function QuestionPage() {
           </div>
         </div>
         {/* RIGHT PANE: Code Editor */}
-        <div className="flex flex-col bg-[#1e1e1e]">
+        <div className="flex flex-col bg-white">
           {/* Editor Header */}
-          <div className="h-12 border-b border-slate-800 flex items-center px-4 justify-between bg-slate-900">
+          <div className="h-12 border-b border-grey flex items-center px-4 justify-between bg-white">
             <span className="text-sm font-medium text-slate-400">JavaScript</span>
             <div className="flex items-center gap-2">
               <Link

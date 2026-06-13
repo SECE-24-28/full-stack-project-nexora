@@ -47,8 +47,8 @@ export default function NavbarClient({ session }: NavbarClientProps) {
   const isAnyAiToolActive = isPlannerActive || isMockActive || isNotesActive;
 
   return (
-    <nav className="bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-4 sm:px-6 py-3.5 sticky top-0 z-50 shadow-sm transition-all duration-300">
-      <div className="max-w-5xl mx-auto flex justify-between items-center">
+    <nav className="w-full bg-white border-b border-slate-200 px-10 py-4 sticky top-0 z-50">
+      <div className="w-full flex justify-between items-center">
         
         {/* Left Side: Logo & Desktop Links */}
         <div className="flex items-center gap-8">
