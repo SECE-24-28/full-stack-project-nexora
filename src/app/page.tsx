@@ -37,11 +37,12 @@ interface Question {
 }
 
 export default function Home() {
-  const { loading, error, data } = useQuery(GET_QUESTIONS);
+  const { loading, error, data } = useQuery<{ questions: Question[] }>(GET_QUESTIONS);
   const [updateProgress] = useMutation(UPDATE_PROGRESS);
 
   if (loading) return <div className="p-10 text-center text-slate-500">Loading questions...</div>;
   if (error) return <div className="p-10 text-center text-red-500">Error: {error.message}</div>;
+  if (!data?.questions) return <div className="p-10 text-center text-slate-550">No questions found.</div>;
 
   return (
     <main className="min-h-screen bg-slate-50 p-10">

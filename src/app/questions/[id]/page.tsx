@@ -38,7 +38,7 @@ export default function QuestionPage() {
   const [code, setCode] = useState("// Write your solution here...\n");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { loading, error, data } = useQuery(GET_QUESTION, { variables: { id }, skip: !id });
+  const { loading, error, data } = useQuery<{ question: any }>(GET_QUESTION, { variables: { id }, skip: !id });
   const [updateProgress] = useMutation(UPDATE_PROGRESS);
 
   if (loading) return <div className="min-h-screen flex items-center justify-center font-medium bg-slate-900 text-slate-300">Loading workspace...</div>;
@@ -132,13 +132,24 @@ export default function QuestionPage() {
           {/* Editor Header */}
           <div className="h-12 border-b border-slate-800 flex items-center px-4 justify-between bg-slate-900">
             <span className="text-sm font-medium text-slate-400">JavaScript</span>
-            <button 
-              onClick={handleSubmit}
-              disabled={isSubmitting}
-              className="bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold px-4 py-1.5 rounded transition-colors disabled:opacity-50"
-            >
-              {isSubmitting ? "Running Tests..." : "Submit Code"}
-            </button>
+            <div className="flex items-center gap-2">
+              <Link
+                href={`/ai-notes?topic=${encodeURIComponent(q.title)}`}
+                className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs sm:text-sm font-bold px-3.5 py-1.5 rounded-lg transition-all duration-200 inline-flex items-center gap-1.5 shadow-md shadow-purple-900/20 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <svg className="w-4 h-4 text-purple-100" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.64 8.5L14 3m5.64 5.5A1.5 1.5 0 1118 7.5l1.64 1M14 3v5h5M12 12h-2m2 4h-4m12 3v-7a2 2 0 00-2-2h-3.586a1 1 0 01-.707-.293L10.293 3.707A1 1 0 009.586 3.5H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2z" />
+                </svg>
+                <span>AI Notes</span>
+              </Link>
+              <button 
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+                className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-bold px-4 py-1.5 rounded-lg transition-all duration-200 disabled:opacity-50 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                {isSubmitting ? "Running Tests..." : "Submit Code"}
+              </button>
+            </div>
           </div>
 
           {/* Monaco Editor */}
